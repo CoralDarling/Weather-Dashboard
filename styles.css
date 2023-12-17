@@ -134,3 +134,8 @@ header {
     border-radius: 10px;
     cursor: pointer;
 }
+
+/* Added hover effect */
+.history-item:hover {
+    background-color: #bdc3c7;
+}
