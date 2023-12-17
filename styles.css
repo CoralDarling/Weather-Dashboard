@@ -139,3 +139,28 @@ header {
 .history-item:hover {
     background-color: #bdc3c7;
 }
+
+/* Hidden class to hide elements */
+.hidden {
+    display: none;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    #dashboard {
+        flex-direction: column;
+    }
+
+    #search-input {
+        width: calc(100% - 120px);
+    }
+
+    #weather-container {
+        width: 90%;
+    }
+
+    #forecast-weather {
+        flex-direction: column;
+        align-items: center;
+    }
+}
