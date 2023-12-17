@@ -104,8 +104,9 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     max-width: 800px;
     margin: 0 auto;
+}
 
-    /* Forecast cards */
+/* Forecast cards */
 .forecast-card {
     background-color: #f7f7f7;
     padding: 10px;
@@ -126,6 +127,7 @@ header {
     width: 80%;
     margin: 20px auto;
 }
+
 /* History item styles */
 .history-item {
     background-color: #dfe6e9;
@@ -135,7 +137,6 @@ header {
     cursor: pointer;
 }
 
-/* Added hover effect */
 .history-item:hover {
     background-color: #bdc3c7;
 }

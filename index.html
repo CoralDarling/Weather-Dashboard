@@ -1,10 +1,10 @@
-<!DOCTYPE html> 
-<html lang="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enchanced Weather Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Enhanced Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>Weather Forecast Dashboard</header>
@@ -16,24 +16,25 @@
         <div id="error-message" class="hidden"></div>
         <div id="weather-container">
             <div id="current-weather" class="hidden">
-                 <h2>Current Weather</h2>
-                 <p id="city-name"></p>
-                 <p id="weather-icon"></p>
-                 <p id="temperature"></p>
-                 <p id="humidity"></p>
-                 <p id="wind-speed"></p>
+                <h2>Current Weather</h2>
+                <p id="city-name"></p>
+                <p id="weather-icon"></p>
+                <p id="temperature"></p>
+                <p id="humidity"></p>
+                <p id="wind-speed"></p>
             </div>
             <div id="forecast-weather" class="hidden">
                 <h2>5-Day Forecast</h2>
-                <div id="forercast-container"></div>
+                <div id="forecast-container"></div>
             </div>
         </div>
         <div id="search-history"></div>
     </div>
-    <script>
-        const apiKey = "1c7d6c3dbc2c72342438a87924ebb034";
-    
-        function fetchCoords(city) {
+
+<script>
+    const apiKey = "1c7d6c3dbc2c72342438a87924ebb034";
+
+function fetchCoords(city) {
   city = city.trim().toLowerCase();
   const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
   fetch(geocodingUrl)
@@ -55,8 +56,9 @@
       console.error("Geocoding error:", error);
       displayError("An error occurred while fetching data.");
     });
+}
 
-    function fetchWeather(city, lat, lon) {
+function fetchWeather(city, lat, lon) {
   const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
   const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
 
@@ -159,7 +161,6 @@ document.getElementById("search-button").addEventListener("click", () => {
 });
 
 window.onload = updateSearchHistory;
-}
 </script>
 </body>
 </html>
