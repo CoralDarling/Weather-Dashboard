@@ -54,3 +54,38 @@ header {
 #weather-container {
     margin-top: 20px;
 }
+
+/* Current weather display */
+#current-weather {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    width: 80%;
+    margin: 0 auto 20px auto;
+}
+
+#current-weather h2 {
+    font-size: 24px;
+}
+
+/* Weather details */
+#current-weather-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#weather-icon {
+    font-size: 48px;
+}
+
+#current-details {
+    margin-left: 20px;
+    text-align: left;
+}
+
+#current-details p {
+    margin: 5px 0;
+}
