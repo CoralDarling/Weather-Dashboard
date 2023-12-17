@@ -16,6 +16,7 @@ A weather dashboard that will run in the browser and feature dynamically updated
 
 ## Demo
 
+
 ![image](https://github.com/CoralDarling/Weather-Dashboard/assets/109124878/3743ce94-f038-49d1-8d50-39b9dd7ae532)
 
 
