@@ -89,3 +89,18 @@ header {
 #current-details p {
     margin: 5px 0;
 }
+
+/* 5-Day Forecast */
+#forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#forecast-weather {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 0 auto;
