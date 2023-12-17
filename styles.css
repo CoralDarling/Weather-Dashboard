@@ -14,3 +14,38 @@ header {
     padding: 20px 0;
     font-size: 28px;
 }
+
+/* City search container */
+#city-search {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Search input field */
+#search-input {
+    padding: 10px;
+    border: 1px solid #7f8c8d;
+    border-radius: 15px;
+    width: calc(100% - 120px);
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Search button */
+#search-button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
