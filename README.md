@@ -14,10 +14,12 @@ A weather dashboard that will run in the browser and feature dynamically updated
 
 **Search History:** Cities searched are stored in the search history, allowing users to revisit weather details for previous searches.
 
+## Demo
+
 ![image](https://github.com/CoralDarling/Weather-Dashboard/assets/109124878/3743ce94-f038-49d1-8d50-39b9dd7ae532)
 
 
-# Usage
+## Usage
 
 City Search:
 
