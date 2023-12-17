@@ -126,3 +126,11 @@ header {
     width: 80%;
     margin: 20px auto;
 }
+/* History item styles */
+.history-item {
+    background-color: #dfe6e9;
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 10px;
+    cursor: pointer;
+}
