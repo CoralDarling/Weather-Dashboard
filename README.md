@@ -1,10 +1,10 @@
 # Weather-Dashboard
 
-##Overview
+## Overview
 
 A weather dashboard that will run in the browser and feature dynamically updated HTML and CSS for various cities.
 
-##Features
+## Features
 
 **City Search:** Users can search for cities to access current and future weather conditions.
 
@@ -14,5 +14,5 @@ A weather dashboard that will run in the browser and feature dynamically updated
 
 **Search History:** Cities searched are stored in the search history, allowing users to revisit weather details for previous searches.
 
-#Usage
+# Usage
 
