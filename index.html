@@ -30,10 +30,136 @@
         </div>
         <div id="search-history"></div>
     </div>
+    <script>
+        const apiKey = "1c7d6c3dbc2c72342438a87924ebb034";
+    
+        function fetchCoords(city) {
+  city = city.trim().toLowerCase();
+  const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+  fetch(geocodingUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("City not found!");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data && data.length > 0) {
+        const { lat, lon } = data[0];
+        fetchWeather(city, lat, lon);
+      } else {
+        displayError("City not found!");
+      }
+    })
+    .catch((error) => {
+      console.error("Geocoding error:", error);
+      displayError("An error occurred while fetching data.");
+    });
 
+    function fetchWeather(city, lat, lon) {
+  const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
 
+  Promise.all([fetch(currentUrl), fetch(forecastUrl)])
+    .then((responses) => Promise.all(responses.map((res) => res.json())))
+    .then((data) => {
+      displayCurrentWeather(data[0]);
+      displayForecastWeather(data[1]);
+      saveSearchHistory(city);
+    })
+    .catch((error) => console.error("Weather fetch error:", error));
+}
 
+function displayCurrentWeather(data) {
+  const weatherSection = document.getElementById("current-weather");
+  weatherSection.classList.remove("hidden");
+  document.getElementById("city-name").textContent = `${
+    data.name
+  } (${new Date().toLocaleDateString()})`;
+  document.getElementById(
+    "weather-icon"
+  ).innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}">`;
+  document.getElementById(
+    "temperature"
+  ).textContent = `Temperature: ${data.main.temp} °F`;
+  document.getElementById(
+    "humidity"
+  ).textContent = `Humidity: ${data.main.humidity}%`;
+  document.getElementById(
+    "wind-speed"
+  ).textContent = `Wind Speed: ${data.wind.speed} MPH`;
+}
+
+function displayForecastWeather(data) {
+  const forecastContainer = document.getElementById("forecast-container");
+  forecastContainer.innerHTML = "";
+  for (let i = 0; i < data.list.length; i += 8) {
+    const forecastData = data.list[i];
+    const forecastCard = document.createElement("div");
+    forecastCard.className = "forecast-card";
+    forecastCard.innerHTML = `
+          <h3>${new Date(forecastData.dt * 1000).toLocaleDateString()}</h3>
+          <img src="https://openweathermap.org/img/wn/${
+            forecastData.weather[0].icon
+          }.png" alt="${forecastData.weather[0].description}">
+          <p>Temp: ${forecastData.main.temp} °F</p>
+          <p>Humidity: ${forecastData.main.humidity}%</p>
+          <p>Wind: ${forecastData.wind.speed} MPH</p>
+        `;
+    forecastContainer.appendChild(forecastCard);
+  }
+  document.getElementById("forecast-weather").classList.remove("hidden");
+}
+
+function saveSearchHistory(city) {
+  city = city.trim().toLowerCase();
+  let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+  if (!searchHistory.includes(city)) {
+    searchHistory.push(city);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  }
+  updateSearchHistory();
+}
+
+function displayError(message) {
+  const errorContainer = document.getElementById("error-message");
+  errorContainer.textContent = message;
+  errorContainer.classList.remove("hidden");
+  setTimeout(() => errorContainer.classList.add("hidden"), 3000);
+}
+
+function displayWeatherFromHistory(city) {
+  fetchCoords(city);
+}
+
+function updateSearchHistory() {
+  const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+  const historyContainer = document.getElementById("search-history");
+
+  historyContainer.innerHTML = "";
+
+  searchHistory.forEach((city) => {
+    const historyItem = document.createElement("div");
+    historyItem.className = "history-item";
+    historyItem.textContent = city;
+    historyItem.addEventListener("click", () => {
+      displayWeatherFromHistory(city);
+    });
+    historyContainer.appendChild(historyItem);
+  });
+}
+
+document.getElementById("search-button").addEventListener("click", () => {
+  const city = document.getElementById("search-input").value.trim();
+  if (city) {
+    fetchCoords(city);
+  } else {
+    displayError("Please enter a city name");
+  }
+});
+
+window.onload = updateSearchHistory;
+}
+</script>
 </body>
-
-
 </html>
