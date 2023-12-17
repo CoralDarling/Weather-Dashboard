@@ -104,3 +104,25 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     max-width: 800px;
     margin: 0 auto;
+
+    /* Forecast cards */
+.forecast-card {
+    background-color: #f7f7f7;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: calc(20% - 20px);
+    text-align: center;
+}
+
+/* Search history container */
+#search-history {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    max-width: 300px;
+    width: 80%;
+    margin: 20px auto;
+}
