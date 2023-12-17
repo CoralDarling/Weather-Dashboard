@@ -20,6 +20,9 @@ A weather dashboard that will run in the browser and feature dynamically updated
 ![image](https://github.com/CoralDarling/Weather-Dashboard/assets/109124878/3743ce94-f038-49d1-8d50-39b9dd7ae532)
 
 
+![image](https://github.com/CoralDarling/Weather-Dashboard/assets/109124878/8f303969-2899-4c22-89a4-b0576db5a299)
+
+
 ## Usage
 
 ### City Search:
